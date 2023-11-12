@@ -13,9 +13,54 @@ Answer the following questions about home sales using SparkSQL:
 * Clean-up cache
 
 # Results
+* What is the average price for a four-bedroom house sold for each year? Round off your answer to two decimal places.
 
+date_built|avg_price
+:----------|---------:
+2016|296050.24
+2017|296576.69
+2010|296800.75
+2012|298233.42
+2014|299073.89
+2013|299999.39
+2011| 302141.9
+2015|307908.86
+
+* What is the average price of a home for each year it was built that has three bedrooms and three bathrooms? Round off your answer to two decimal places.
+
+date_built|avg_price
+:----------|---------:
+2015| 288770.3
+2016|290555.07
+2014|290852.27
+2011|291117.47
+2017|292676.79
+2010|292859.62
+2012|293683.19
+2013|295962.27
+
+* What is the average price of a home for each year that has three bedrooms, three bathrooms, two floors, and is greater than or equal to 2,000 square feet? Round off your answer to two decimal places.
+
+date_built|avg_price
+:----------|---------
+2011|276553.81
+2017|280317.58
+2010|285010.22
+2016| 293965.1
+2015|297609.97
+2014|298264.72
+2013|303676.79
+2012|307539.97
+
+* What is the "view" rating for homes costing more than or equal to $350,000? Determine the run time for this query, and round off your answer to two decimal places.
+
+avg_price|avg_view|sum_view|min_view|max_view
+:---------|--------|--------|--------|--------:
+473796.26|   32.26|  358937|       0|     100
+
+### Performance
 * Without caching and partitioning, the final query took 1.10s
-* With caching, the final query took 0.75s
+*  With caching, the final query took 0.75s
 * With parquet partitioning, the final query took 0.89s
 
 Caching and parquet partitioning improve performance compared to doing neither of these. The query complexity and dataset size will dictate whether parquet partitioning or caching will be better.
